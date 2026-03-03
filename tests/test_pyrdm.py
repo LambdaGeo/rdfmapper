@@ -350,6 +350,17 @@ class TestRDFRepository:
         with pytest.raises((ValueError, TypeError)):
             repo.find_by_name()
 
+    def test_performance_bulk_find(self, mapper, person_class):
+        """Repository must handle 1000+ entities without error."""
+        people = [
+            person_class(EX[f"person/bulk{i}"], f"Pessoa {i}")
+            for i in range(1000)
+        ]
+        graph = mapper.to_rdf_many(people)
+        repo = RDFRepository(mapper, graph, person_class)
+        results = repo.find_by_name_like(name="Pessoa")
+        assert len(results) >= 1000
+
 
 # ---------------------------------------------------------------------------
 # 6. SHACL validation
