@@ -401,7 +401,7 @@ class PyRDM:
             data_graph=data_graph,
             shacl_graph=shacl_graph,
             inference=kwargs.get("inference", "rdfs"),
-            abort_on_error=kwargs.get("abort_on_error", False),
+            abort_on_first=kwargs.get("abort_on_first", False),
             meta_shacl=kwargs.get("meta_shacl", False),
             advanced=kwargs.get("advanced", True),
             debug=kwargs.get("debug", False),
