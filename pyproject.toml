@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyrdm"
+version = "0.1.0"
+description = "A declarative Object-RDF Mapper for Python — map Python classes to RDF graphs using decorators."
+readme = { file = "README.md", content-type = "text/markdown" }
+authors = [
+    { name = "Felipe dos Santos Goiabeira", email = "felipe.goiabeira@discente.ufma.br" },
+    { name = "Sergio Costa", email = "sergio.costa@ufma.br" },
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["rdf", "semantic web", "linked data", "orm", "sparql", "shacl"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "rdflib>=6.0.0",
+    "pyshacl>=0.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.0",
+    "pytest>=7.0",
+    "mkdocs>=1.5",
+    "mkdocstrings[python]>=0.24",
+    "mkdocs-material>=9.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/lambdageo/pyrdm"
+Repository = "https://github.com/lambdageo/pyrdm"
+Issues = "https://github.com/lambdageo/pyrdm/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+strict = false
