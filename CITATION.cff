@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use pyrdm in your research, please cite it as below."
+type: software
+title: "pyrdm: A Declarative Object-RDF Mapper for Python"
+version: 0.1.0
+date-released: "2025-01-01"
+license: MIT
+repository-code: "https://github.com/lambdageo/pyrdm"
+url: "https://github.com/lambdageo/pyrdm"
+abstract: >
+  pyrdm is a Python library that provides declarative Object-RDF Mapping (ORM),
+  enabling developers to map Python classes to RDF graphs using a decorator-based
+  API without writing SPARQL queries or manipulating triples directly.
+keywords:
+  - Semantic Web
+  - RDF
+  - Linked Data
+  - ORM
+  - SHACL
+  - SPARQL
+  - Python
+authors:
+  - family-names: Goiabeira
+    given-names: Felipe dos Santos
+    email: felipe.goiabeira@discente.ufma.br
+    affiliation: "Federal University of Maranhão (UFMA), Brazil"
+  - family-names: Costa
+    given-names: Sergio Souza
+    email: sergio.costa@ufma.br
+    affiliation: "Federal University of Maranhão (UFMA), Brazil"
+    orcid: "https://orcid.org/0000-0002-0232-4549"
+references:
+  - type: thesis
+    title: >
+      Mapeamento Declarativo para a Web Semântica: Desenvolvimento e Avaliação
+      do Framework RDFMapper para Integração Objeto-RDF em Python
+    authors:
+      - family-names: Goiabeira
+        given-names: Felipe dos Santos
+    institution:
+      name: "Federal University of Maranhão (UFMA)"
+    year: 2025
+    thesis-type: "Bachelor's thesis"
