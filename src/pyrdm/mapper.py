@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import datetime
-from typing import Any, Type
+import inspect
+from typing import Any, cast, Optional, Type
 
 from rdflib import BNode, Graph, Literal, Namespace, RDF, URIRef, XSD
 from pyshacl import validate
@@ -181,7 +182,7 @@ class PyRDM:
     # Serialization
     # ------------------------------------------------------------------
 
-    def to_rdf(self, obj: Any, base_uri: str = None, visited: set = None) -> Graph:
+    def to_rdf(self, obj: Any, base_uri: Optional[str] = None, visited: Optional[set[Any]] = None) -> Graph:
         """
         Serialize a Python object into an RDF graph.
 
@@ -203,7 +204,8 @@ class PyRDM:
             visited = set()
 
         graph = Graph()
-        subject = URIRef(obj.uri if hasattr(obj, "uri") else base_uri)
+        uri_val: str = obj.uri if hasattr(obj, "uri") else cast(str, base_uri)
+        subject = URIRef(uri_val)
 
         if subject in visited:
             graph.add((subject, RDF.type, obj._rdf_type_uri))
@@ -215,19 +217,23 @@ class PyRDM:
         for attr in dir(obj):
             val = getattr(obj, attr)
             prop = getattr(type(obj), attr, None)
-            if hasattr(prop, "fget") and getattr(prop.fget, "_is_rdf_property", False):
-                pred = prop.fget._rdf_predicate
-                if getattr(prop.fget, "_is_relationship", False):
-                    if prop.fget._relationship_type == "one_to_one" and val:
-                        graph.add((subject, pred, URIRef(val.uri)))
-                        graph += self.to_rdf(val, visited=visited)
-                    elif prop.fget._relationship_type == "one_to_many" and isinstance(val, list):
-                        for item in val:
-                            graph.add((subject, pred, URIRef(item.uri)))
-                            graph += self.to_rdf(item, visited=visited)
-                else:
-                    if val is not None:
-                        graph.add((subject, pred, self._python_to_literal(val)))
+            if not isinstance(prop, property):
+                continue
+            fget: Any = prop.fget
+            if fget is None or not getattr(fget, "_is_rdf_property", False):
+                continue
+            pred = fget._rdf_predicate
+            if getattr(fget, "_is_relationship", False):
+                if fget._relationship_type == "one_to_one" and val:
+                    graph.add((subject, pred, URIRef(val.uri)))
+                    graph += self.to_rdf(val, visited=visited)
+                elif fget._relationship_type == "one_to_many" and isinstance(val, list):
+                    for item in val:
+                        graph.add((subject, pred, URIRef(item.uri)))
+                        graph += self.to_rdf(item, visited=visited)
+            else:
+                if val is not None:
+                    graph.add((subject, pred, self._python_to_literal(val)))
 
         return graph
 
@@ -251,7 +257,7 @@ class PyRDM:
             graph += self.to_rdf(obj, visited=visited)
         return graph
 
-    def from_rdf(self, graph: Graph, cls: Type, subject_uri: str, visited: dict = None) -> Any:
+    def from_rdf(self, graph: Graph, cls: Type[Any], subject_uri: str, visited: Optional[dict[Any, Any]] = None) -> Any:
         """
         Deserialize an RDF graph back into a Python object.
 
@@ -279,29 +285,33 @@ class PyRDM:
         if subject in visited:
             return visited[subject]
 
-        instance = cls.__new__(cls)
+        instance: Any = object.__new__(cls)
         instance.uri = subject
         visited[subject] = instance
 
         for attr in dir(cls):
             prop = getattr(cls, attr, None)
-            if hasattr(prop, "fget") and getattr(prop.fget, "_is_rdf_property", False):
-                pred = prop.fget._rdf_predicate
-                if getattr(prop.fget, "_is_relationship", False):
-                    target_cls = prop.fget._target_class()
-                    if prop.fget._relationship_type == "one_to_one":
-                        obj_ref = graph.value(subject, pred)
-                        if obj_ref:
-                            setattr(instance, attr, self.from_rdf(graph, target_cls, str(obj_ref), visited))
-                    elif prop.fget._relationship_type == "one_to_many":
-                        objs = [
-                            self.from_rdf(graph, target_cls, str(obj_ref), visited)
-                            for obj_ref in graph.objects(subject, pred)
-                        ]
-                        setattr(instance, attr, objs)
-                else:
-                    val = graph.value(subject, pred)
-                    setattr(instance, attr, self._literal_to_python(val))
+            if not isinstance(prop, property):
+                continue
+            fget: Any = prop.fget
+            if fget is None or not getattr(fget, "_is_rdf_property", False):
+                continue
+            pred = fget._rdf_predicate
+            if getattr(fget, "_is_relationship", False):
+                target_cls = fget._target_class()
+                if fget._relationship_type == "one_to_one":
+                    obj_ref = graph.value(subject, pred)
+                    if obj_ref:
+                        setattr(instance, attr, self.from_rdf(graph, target_cls, str(obj_ref), visited))
+                elif fget._relationship_type == "one_to_many":
+                    objs = [
+                        self.from_rdf(graph, target_cls, str(obj_ref), visited)
+                        for obj_ref in graph.objects(subject, pred)
+                    ]
+                    setattr(instance, attr, objs)
+            else:
+                val = graph.value(subject, pred)
+                setattr(instance, attr, self._literal_to_python(val))
 
         return instance
 
@@ -323,7 +333,7 @@ class PyRDM:
         Graph
             An rdflib Graph containing the SHACL NodeShape.
         """
-        import inspect
+        import inspect as _inspect
 
         shape_graph = Graph()
         SH = Namespace("http://www.w3.org/ns/shacl#")
@@ -333,48 +343,52 @@ class PyRDM:
         shape_graph.add((shape_uri, RDF.type, SH.NodeShape))
         shape_graph.add((shape_uri, SH.targetClass, cls._rdf_type_uri))
 
-        init_type_hints = {}
+        init_type_hints: dict[str, Any] = {}
         try:
-            init_type_hints = inspect.signature(cls.__init__).parameters
+            init_type_hints = dict(_inspect.signature(cls.__init__).parameters)
         except Exception:
             pass
 
         for attr in dir(cls):
             prop = getattr(cls, attr, None)
-            if hasattr(prop, "fget") and getattr(prop.fget, "_is_rdf_property", False):
-                min_count = getattr(prop.fget, "_min_count", 0)
-                max_count = getattr(prop.fget, "_max_count", 1)
-                pred = prop.fget._rdf_predicate
+            if not isinstance(prop, property):
+                continue
+            fget: Any = prop.fget
+            if fget is None or not getattr(fget, "_is_rdf_property", False):
+                continue
+            min_count = getattr(fget, "_min_count", 0)
+            max_count = getattr(fget, "_max_count", 1)
+            pred = fget._rdf_predicate
 
-                prop_bnode = BNode()
-                shape_graph.add((shape_uri, SH.property, prop_bnode))
-                shape_graph.add((prop_bnode, SH.path, pred))
+            prop_bnode = BNode()
+            shape_graph.add((shape_uri, SH.property, prop_bnode))
+            shape_graph.add((prop_bnode, SH.path, pred))
 
-                tipo = XSD.string
-                if attr in init_type_hints:
-                    ann = init_type_hints[attr].annotation
-                    if ann == int:
-                        tipo = XSD.integer
-                    elif ann == float:
-                        tipo = XSD.double
-                    elif ann == bool:
-                        tipo = XSD.boolean
-                    elif ann == datetime.datetime:
-                        tipo = XSD.dateTime
+            tipo = XSD.string
+            if attr in init_type_hints:
+                ann = init_type_hints[attr].annotation
+                if ann == int:
+                    tipo = XSD.integer
+                elif ann == float:
+                    tipo = XSD.double
+                elif ann == bool:
+                    tipo = XSD.boolean
+                elif ann == datetime.datetime:
+                    tipo = XSD.dateTime
 
-                shape_graph.add((prop_bnode, SH.datatype, tipo))
-                shape_graph.add((prop_bnode, SH.minCount, Literal(min_count)))
-                shape_graph.add((prop_bnode, SH.maxCount, Literal(max_count)))
+            shape_graph.add((prop_bnode, SH.datatype, tipo))
+            shape_graph.add((prop_bnode, SH.minCount, Literal(min_count)))
+            shape_graph.add((prop_bnode, SH.maxCount, Literal(max_count)))
 
         return shape_graph
 
     def validate(
         self,
         data_graph: Graph,
-        shacl_graph: Graph = None,
-        entity_class: Type = None,
-        **kwargs,
-    ) -> tuple:
+        shacl_graph: Optional[Graph] = None,
+        entity_class: Optional[Type[Any]] = None,
+        **kwargs: Any,
+    ) -> tuple[bool, Graph, str]:
         """
         Validate an RDF graph against SHACL constraints.
 
