@@ -10,10 +10,11 @@ tags:
   - SPARQL
 authors:
   - name: Felipe dos Santos Goiabeira
-    affiliation: "1"
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
   - name: Sergio Souza Costa
-    orcid: 0000-0002-0232-4549
-    affiliation: "1"
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
 affiliations:
   - name: Federal University of Maranhão (UFMA), Brazil
     index: 1
@@ -52,10 +53,10 @@ patterns of enterprise application architecture [@fowler2002patterns] establishe
 the ORM as a foundational design pattern for relational databases, later
 formalized in Java through the JPA specification [@jpa_spec] and in Python through
 SQLAlchemy [@sqlalchemy]. In the RDF world, Empire [@bischof2011empire] brought a
-JPA-style annotation API to Java, and RDFAlchemy [@rdfalchemy] provided an early
-attempt at ORM-style access to RDF stores in Python. However, RDFAlchemy has been
-unmaintained since 2012 and does not support modern Python packaging, type
-annotations, or SHACL validation.
+JPA-style annotation API to Java, and RDFAlchemy [@rdfalchemy] and SuRF [@surf]
+provided early attempts at ORM-style access to RDF stores in Python. However,
+both have been unmaintained since 2012 and 2016 respectively, and neither supports
+modern Python packaging, type annotations, or SHACL validation.
 
 `rdfmapper` fills this gap for the Python ecosystem by providing:
 
