@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_batch xmlns="http://www.crossref.org/schema/5.3.1"
+           xmlns:ai="http://www.crossref.org/AccessIndicators.xsd"
+           xmlns:rel="http://www.crossref.org/relations.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           version="5.3.1"
+           xsi:schemaLocation="http://www.crossref.org/schema/5.3.1 http://www.crossref.org/schemas/crossref5.3.1.xsd">
+  <head>
+    <doi_batch_id>20260304111837-bd3865a96f499b6f711e0009c569678c2fa82093</doi_batch_id>
+    <timestamp>20260304111837</timestamp>
+    <depositor>
+      <depositor_name>JOSS Admin</depositor_name>
+      <email_address>admin@theoj.org</email_address>
+    </depositor>
+    <registrant>The Open Journal</registrant>
+  </head>
+  <body>
+    <journal>
+      <journal_metadata>
+        <full_title>Journal of Open Source Software</full_title>
+        <abbrev_title>JOSS</abbrev_title>
+        <issn media_type="electronic">2475-9066</issn>
+        <doi_data>
+          <doi>10.21105/joss</doi>
+          <resource>https://joss.theoj.org</resource>
+        </doi_data>
+      </journal_metadata>
+      <journal_issue>
+        <publication_date media_type="online">
+          <month>01</month>
+          <year>1970</year>
+        </publication_date>
+        <journal_volume>
+          <volume>¿VOL?</volume>
+        </journal_volume>
+        <issue>¿ISSUE?</issue>
+      </journal_issue>
+      <journal_article publication_type="full_text">
+        <titles>
+          <title>pyrdm: A Declarative Object-RDF Mapper for Python</title>
+        </titles>
+        <contributors>
+          <person_name sequence="first" contributor_role="author">
+            <given_name>Felipe</given_name>
+            <surname>dos Santos Goiabeira</surname>
+            <affiliations>
+              <institution><institution_name>Federal University of Maranhão (UFMA), Brazil</institution_name></institution>
+            </affiliations>
+          </person_name>
+          <person_name sequence="additional"
+                       contributor_role="author">
+            <given_name>Sergio Souza</given_name>
+            <surname>Costa</surname>
+            <affiliations>
+              <institution><institution_name>Federal University of Maranhão (UFMA), Brazil</institution_name></institution>
+            </affiliations>
+            <ORCID>https://orcid.org/0000-0002-0232-4549</ORCID>
+          </person_name>
+        </contributors>
+        <publication_date>
+          <month>01</month>
+          <day>01</day>
+          <year>1970</year>
+        </publication_date>
+        <pages>
+          <first_page>¿PAGE?</first_page>
+        </pages>
+        <publisher_item>
+          <identifier id_type="doi">N/A</identifier>
+        </publisher_item>
+        <ai:program name="AccessIndicators">
+          <ai:license_ref applies_to="vor">http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+          <ai:license_ref applies_to="am">http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+          <ai:license_ref applies_to="tdm">http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+        </ai:program>
+        <rel:program>
+          <rel:related_item>
+            <rel:description>Software archive</rel:description>
+            <rel:inter_work_relation relationship-type="references" identifier-type="doi">10.5281</rel:inter_work_relation>
+          </rel:related_item>
+          <rel:related_item>
+            <rel:description>GitHub review issue</rel:description>
+            <rel:inter_work_relation relationship-type="hasReview" identifier-type="uri">https://github.com/openjournals</rel:inter_work_relation>
+          </rel:related_item>
+        </rel:program>
+        <doi_data>
+          <doi>N/A</doi>
+          <resource>https://joss.theoj.org/papers/N/A</resource>
+          <collection property="text-mining">
+            <item>
+              <resource mime_type="application/pdf">https://joss.theoj.org/papers/N/A.pdf</resource>
+            </item>
+          </collection>
+        </doi_data>
+        <citation_list>
+          <citation key="rdflib">
+            <article_title>RDFLib: A python library for working with RDF</article_title>
+            <author>Team</author>
+            <cYear>2023</cYear>
+            <unstructured_citation>Team, R. (2023). RDFLib: A python library for working with RDF (Version 6.0). https://github.com/RDFLib/rdflib</unstructured_citation>
+          </citation>
+          <citation key="pyshacl">
+            <article_title>pySHACL: A python validator for SHACL</article_title>
+            <author>Sommer</author>
+            <cYear>2024</cYear>
+            <unstructured_citation>Sommer, A. (2024). pySHACL: A python validator for SHACL. https://github.com/RDFLib/pySHACL</unstructured_citation>
+          </citation>
+          <citation key="sqlalchemy">
+            <volume_title>SQLAlchemy</volume_title>
+            <author>Bayer</author>
+            <cYear>2012</cYear>
+            <unstructured_citation>Bayer, M. (2012). SQLAlchemy (A. Brown &amp; G. Wilson, Eds.). aosabook.org. http://aosabook.org/en/sqlalchemy.html</unstructured_citation>
+          </citation>
+          <citation key="jpa_spec">
+            <article_title>Jakarta persistence 3.0</article_title>
+            <author>Eclipse Foundation</author>
+            <cYear>2020</cYear>
+            <unstructured_citation>Eclipse Foundation. (2020). Jakarta persistence 3.0 [Specification]. Eclipse Foundation. https://jakarta.ee/specifications/persistence/3.0/</unstructured_citation>
+          </citation>
+          <citation key="bischof2011empire">
+            <article_title>Empire: A JPA-based RDF object-mapper</article_title>
+            <author>Bischof</author>
+            <journal_title>The semantic web: Research and applications</journal_title>
+            <doi>10.1007/978-3-642-21034-1_23</doi>
+            <cYear>2011</cYear>
+            <unstructured_citation>Bischof, S., Decker, B., Kurz, T., &amp; Schandl, B. (2011). Empire: A JPA-based RDF object-mapper. The Semantic Web: Research and Applications, 336–350. https://doi.org/10.1007/978-3-642-21034-1_23</unstructured_citation>
+          </citation>
+          <citation key="rdfalchemy">
+            <article_title>RDFAlchemy: An ORM for RDF in python</article_title>
+            <author>Dodds</author>
+            <cYear>2012</cYear>
+            <unstructured_citation>Dodds, L. (2012). RDFAlchemy: An ORM for RDF in python. https://github.com/rdfalchemy/rdfalchemy</unstructured_citation>
+          </citation>
+          <citation key="w3c_rdf11_concepts">
+            <article_title>RDF 1.1 concepts and abstract syntax</article_title>
+            <author>W3C RDF Working Group</author>
+            <cYear>2014</cYear>
+            <unstructured_citation>W3C RDF Working Group. (2014). RDF 1.1 concepts and abstract syntax. https://www.w3.org/TR/rdf11-concepts/</unstructured_citation>
+          </citation>
+          <citation key="w3c_shacl">
+            <article_title>Shapes constraint language (SHACL)</article_title>
+            <author>W3C RDF Data Shapes Working Group</author>
+            <cYear>2017</cYear>
+            <unstructured_citation>W3C RDF Data Shapes Working Group. (2017). Shapes constraint language (SHACL). https://www.w3.org/TR/shacl/</unstructured_citation>
+          </citation>
+          <citation key="w3c_sparql">
+            <article_title>SPARQL 1.1 query language</article_title>
+            <author>W3C SPARQL Working Group</author>
+            <cYear>2013</cYear>
+            <unstructured_citation>W3C SPARQL Working Group. (2013). SPARQL 1.1 query language. https://www.w3.org/TR/sparql11-query/</unstructured_citation>
+          </citation>
+          <citation key="heath2011linked">
+            <volume_title>Linked data: Evolving the web into a global data space</volume_title>
+            <author>Heath</author>
+            <doi>10.2200/S00334ED1V01Y201102WBE001</doi>
+            <cYear>2011</cYear>
+            <unstructured_citation>Heath, T., &amp; Bizer, C. (2011). Linked data: Evolving the web into a global data space. Morgan; Claypool Publishers. https://doi.org/10.2200/S00334ED1V01Y201102WBE001</unstructured_citation>
+          </citation>
+          <citation key="fowler2002patterns">
+            <volume_title>Patterns of enterprise application architecture</volume_title>
+            <author>Fowler</author>
+            <isbn>978-0321127426</isbn>
+            <cYear>2002</cYear>
+            <unstructured_citation>Fowler, M. (2002). Patterns of enterprise application architecture. Addison-Wesley. ISBN: 978-0321127426</unstructured_citation>
+          </citation>
+          <citation key="costa2020dbacademic">
+            <article_title>DBacademic: Conectando os dados abertos das instituicoes de ensino do brasil</article_title>
+            <author>Costa</author>
+            <journal_title>Ciencia da Informacao</journal_title>
+            <issue>3</issue>
+            <volume>49</volume>
+            <cYear>2020</cYear>
+            <unstructured_citation>Costa, S. S., Sousa, M. V. D., Silva, M. L. da, Oliveira, E. C. de, &amp; Guimaraes, J. V. M. (2020). DBacademic: Conectando os dados abertos das instituicoes de ensino do brasil. Ciencia Da Informacao, 49(3).</unstructured_citation>
+          </citation>
+          <citation key="simpot">
+            <article_title>Simpot: Simple object-triple mapping for python</article_title>
+            <author>LambdaGeo Group</author>
+            <cYear>2022</cYear>
+            <unstructured_citation>LambdaGeo Group. (2022). Simpot: Simple object-triple mapping for python. https://github.com/LambdaGeo/simpot</unstructured_citation>
+          </citation>
+          <citation key="goiabeira2025rdfmapper">
+            <article_title>Mapeamento declarativo para a web semantica: Desenvolvimento e avaliacao do framework RDFMapper para integracao objeto-RDF em python</article_title>
+            <author>Goiabeira</author>
+            <cYear>2025</cYear>
+            <unstructured_citation>Goiabeira, F. dos S. (2025). Mapeamento declarativo para a web semantica: Desenvolvimento e avaliacao do framework RDFMapper para integracao objeto-RDF em python.</unstructured_citation>
+          </citation>
+        </citation_list>
+      </journal_article>
+    </journal>
+  </body>
+</doi_batch>
