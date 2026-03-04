@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any
+from typing import Any, cast
 
 from rdflib import Graph
 
@@ -127,7 +127,7 @@ class RDFRepository:
         ValueError
             If a required field value is missing.
         """
-        cls = self.entity_class
+        cls: Any = self.entity_class
         conditions: list[str] = []
 
         for field in fields:
@@ -136,9 +136,10 @@ class RDFRepository:
                 raise ValueError(f"Missing value for field '{field_name}'")
             value = values[field_name]
             prop = getattr(cls, field_name)
-            pred = prop.fget._rdf_predicate
+            fget: Any = prop.fget
+            pred = fget._rdf_predicate
 
-            if getattr(prop.fget, "_is_relationship", False):
+            if getattr(fget, "_is_relationship", False):
                 conditions.append(f"?s <{pred}> <{value}> .")
             else:
                 value_var = f"?v_{field_name}"
@@ -164,7 +165,7 @@ class RDFRepository:
             query += f"\nOFFSET {offset}"
 
         return [
-            self.mapper.from_rdf(self.graph, cls, str(row.s))
+            self.mapper.from_rdf(self.graph, cls, str(cast(Any, row).s))
             for row in self.graph.query(query)
         ]
 
@@ -189,7 +190,7 @@ class RDFRepository:
         ValueError
             If a required field value is missing.
         """
-        cls = self.entity_class
+        cls: Any = self.entity_class
         conditions: list[str] = []
 
         for field in fields:
@@ -197,8 +198,9 @@ class RDFRepository:
                 raise ValueError(f"Missing value for field '{field}'")
             value = values[field]
             prop = getattr(cls, field)
-            pred = prop.fget._rdf_predicate
-            if getattr(prop.fget, "_is_relationship", False):
+            fget: Any = prop.fget
+            pred = fget._rdf_predicate
+            if getattr(fget, "_is_relationship", False):
                 conditions.append(f"?s <{pred}> <{value}> .")
             else:
                 conditions.append(f'?s <{pred}> "{value}" .')
@@ -212,7 +214,7 @@ class RDFRepository:
             "}"
         )
         for row in self.graph.query(query):
-            return int(row[0].toPython())
+            return int(cast(Any, row)[0].toPython())
         return 0
 
     def group_by_count(
@@ -252,12 +254,14 @@ class RDFRepository:
         if order not in ("ASC", "DESC"):
             raise ValueError("order must be 'ASC' or 'DESC'")
 
-        prop = getattr(cls, field, None)
-        if not hasattr(prop, "fget") or not hasattr(prop.fget, "_rdf_predicate"):
+        cls_any: Any = cls
+        prop = getattr(cls_any, field, None)
+        fget: Any = getattr(prop, "fget", None)
+        if fget is None or not hasattr(fget, "_rdf_predicate"):
             raise ValueError(f"'{field}' is not a valid rdf_property")
 
-        class_uri = cls._rdf_type_uri
-        predicate = prop.fget._rdf_predicate
+        class_uri = cls_any._rdf_type_uri
+        predicate = fget._rdf_predicate
 
         query = (
             f"SELECT ?{field} (COUNT(?s) AS ?count)\n"
@@ -270,6 +274,6 @@ class RDFRepository:
         )
 
         return [
-            {field: str(row[0]), "count": int(row[1])}
+            {field: str(cast(Any, row)[0]), "count": int(cast(Any, row)[1])}
             for row in self.graph.query(query)
         ]
