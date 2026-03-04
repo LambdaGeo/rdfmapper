@@ -1,0 +1,58 @@
+site_name: pyrdm
+site_description: A declarative Object-RDF Mapper for Python
+site_url: https://lambdageo.github.io/pyrdm
+repo_url: https://github.com/lambdageo/pyrdm
+repo_name: lambdageo/pyrdm
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+
+nav:
+  - Home: index.md
+  - Background: background.md
+  - Getting Started: getting-started.md
+  - User Guide:
+      - Mapping classes: guide/mapping.md
+      - Relationships: guide/relationships.md
+      - Querying: guide/querying.md
+      - SHACL Validation: guide/shacl.md
+  - API Reference:
+      - PyRDM: api/mapper.md
+      - RDFRepository: api/repository.md
+  - Contributing: contributing.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
