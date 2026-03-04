@@ -1,11 +1,11 @@
-# pyrdm
+# rdfmapper
 
-**pyrdm** is a declarative Object-RDF Mapper for Python. It lets you map Python classes to RDF graphs using decorators, inspired by ORM frameworks such as JPA and SQLAlchemy, without requiring you to write SPARQL or manipulate triples manually.
+**rdfmapper** is a declarative Object-RDF Mapper for Python. It lets you map Python classes to RDF graphs using decorators, inspired by ORM frameworks such as JPA and SQLAlchemy, without requiring you to write SPARQL or manipulate triples manually.
 
-[![Tests](https://github.com/lambdageo/pyrdm/actions/workflows/ci.yml/badge.svg)](https://github.com/lambdageo/pyrdm/actions)
-[![PyPI](https://img.shields.io/pypi/v/pyrdm)](https://pypi.org/project/pyrdm/)
+[![Tests](https://github.com/lambdageo/rdfmapper/actions/workflows/ci.yml/badge.svg)](https://github.com/lambdageo/rdfmapper/actions)
+[![PyPI](https://img.shields.io/pypi/v/rdfmapper-py)](https://pypi.org/project/rdfmapper-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/pyrdm)](https://pypi.org/project/pyrdm/)
+[![Python](https://img.shields.io/pypi/pyversions/rdfmapper-py)](https://pypi.org/project/rdfmapper-py/)
 
 ---
 
@@ -24,14 +24,14 @@
 ## Installation
 
 ```bash
-pip install pyrdm
+pip install rdfmapper-py
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/lambdageo/pyrdm.git
-cd pyrdm
+git clone https://github.com/lambdageo/rdfmapper.git
+cd rdfmapper
 pip install -e ".[dev]"
 ```
 
@@ -41,12 +41,12 @@ pip install -e ".[dev]"
 
 ```python
 from rdflib import Namespace
-from pyrdm import PyRDM, RDFRepository
+from rdfmapper import RDFMapper, RDFRepository
 
 EX = Namespace("http://example.org/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 
 @mapper.rdf_entity(EX.Person)
@@ -179,15 +179,15 @@ mypy src/
 
 ## Citation
 
-If you use pyrdm in your research, please cite:
+If you use rdfmapper in your research, please cite:
 
 ```bibtex
 @software{goiabeira2025pyrdm,
   author    = {Goiabeira, Felipe dos Santos and Costa, Sergio Souza},
-  title     = {pyrdm: A Declarative Object-RDF Mapper for Python},
+  title     = {rdfmapper: A Declarative Object-RDF Mapper for Python},
   year      = {2025},
   publisher = {GitHub},
-  url       = {https://github.com/lambdageo/pyrdm}
+  url       = {https://github.com/lambdageo/rdfmapper}
 }
 ```
 
@@ -201,4 +201,4 @@ MIT — see [LICENSE](LICENSE).
 
 ## Acknowledgements
 
-pyrdm was originally developed as part of a Bachelor's thesis at the Federal University of Maranhão (UFMA) by Felipe dos Santos Goiabeira, advised by Prof. Dr. Sergio Souza Costa, LambdaGeo Research Group.
+rdfmapper was originally developed as part of a Bachelor's thesis at the Federal University of Maranhão (UFMA) by Felipe dos Santos Goiabeira, advised by Prof. Dr. Sergio Souza Costa, LambdaGeo Research Group.

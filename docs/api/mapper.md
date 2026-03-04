@@ -1,3 +1,3 @@
-# PyRDM
+# RDFMapper
 
-::: pyrdm.mapper.PyRDM
+::: rdfmapper.mapper.RDFMapper

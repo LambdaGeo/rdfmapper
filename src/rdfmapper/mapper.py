@@ -8,7 +8,7 @@ from rdflib import BNode, Graph, Literal, Namespace, RDF, URIRef, XSD
 from pyshacl import validate
 
 
-class PyRDM:
+class RDFMapper:
     """
     A declarative Object-RDF Mapper for Python.
 
@@ -19,7 +19,7 @@ class PyRDM:
     --------
     >>> from rdflib import Namespace
     >>> EX = Namespace("http://example.org/")
-    >>> mapper = PyRDM()
+    >>> mapper = RDFMapper()
 
     >>> @mapper.rdf_entity(EX.Person)
     ... class Person:

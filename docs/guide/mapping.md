@@ -31,7 +31,7 @@ def name(self): pass
 
 ## Supported Python types
 
-pyrdm automatically converts Python values to RDF Literals with the correct datatype:
+rdfmapper automatically converts Python values to RDF Literals with the correct datatype:
 
 | Python type | RDF datatype |
 |---|---|

@@ -1,12 +1,12 @@
-# pyrdm
+# rdfmapper
 
-**pyrdm** is a declarative Object-RDF Mapper for Python. It lets you map Python
+**rdfmapper** is a declarative Object-RDF Mapper for Python. It lets you map Python
 classes to RDF graphs using decorators — no SPARQL, no manual triple manipulation.
 
 ```python
-from pyrdm import PyRDM
+from rdfmapper import RDFMapper
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 @mapper.rdf_entity("http://xmlns.com/foaf/0.1/Person")
 class Person:
@@ -34,11 +34,11 @@ print(graph.serialize(format="turtle"))
 ## Installation
 
 ```bash
-pip install pyrdm
+pip install rdfmapper-py
 ```
 
 ## Origin
 
-pyrdm grew out of research at the [LambdaGeo Group](https://github.com/LambdaGeo),
+rdfmapper grew out of research at the [LambdaGeo Group](https://github.com/LambdaGeo),
 Federal University of Maranhão (UFMA). See the [Background](background.md) page for
 the full story.

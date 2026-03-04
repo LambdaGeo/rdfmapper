@@ -1,16 +1,16 @@
 """
-pyrdm -- A declarative Object-RDF Mapper for Python.
+rdfmapper -- A declarative Object-RDF Mapper for Python.
 
 Maps Python classes to RDF graphs using decorators, inspired by ORM
 frameworks such as JPA and SQLAlchemy.
 
 Basic usage
 -----------
->>> from pyrdm import PyRDM, RDFRepository
+>>> from rdfmapper import RDFMapper, RDFRepository
 >>> from rdflib import Namespace
 >>>
 >>> EX = Namespace("http://example.org/")
->>> mapper = PyRDM()
+>>> mapper = RDFMapper()
 >>>
 >>> @mapper.rdf_entity(EX.Person)
 ... class Person:
@@ -27,9 +27,9 @@ Basic usage
 >>> repo.find_by_name(name="Ana Maria")
 """
 
-from pyrdm.mapper import PyRDM
-from pyrdm.repository import RDFRepository
+from rdfmapper.mapper import RDFMapper
+from rdfmapper.repository import RDFRepository
 
-__all__ = ["PyRDM", "RDFRepository"]
+__all__ = ["RDFMapper", "RDFRepository"]
 __version__ = "0.1.0"
 __author__ = "Felipe dos Santos Goiabeira, Sergio Costa"

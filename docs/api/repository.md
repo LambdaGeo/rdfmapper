@@ -1,3 +1,3 @@
 # RDFRepository
 
-::: pyrdm.repository.RDFRepository
+::: rdfmapper.repository.RDFRepository

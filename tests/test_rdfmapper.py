@@ -1,5 +1,5 @@
 """
-Tests for pyrdm.
+Tests for rdfmapper.
 
 Run with:
     pytest tests/
@@ -11,7 +11,7 @@ import pytest
 from rdflib import Literal, Namespace, URIRef, Graph
 from rdflib.namespace import RDF, XSD
 
-from pyrdm import PyRDM, RDFRepository
+from rdfmapper import RDFMapper, RDFRepository
 
 EX = Namespace("http://example.org/")
 
@@ -21,8 +21,8 @@ EX = Namespace("http://example.org/")
 # ---------------------------------------------------------------------------
 
 @pytest.fixture
-def mapper() -> PyRDM:
-    return PyRDM()
+def mapper() -> RDFMapper:
+    return RDFMapper()
 
 
 @pytest.fixture
