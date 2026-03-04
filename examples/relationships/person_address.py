@@ -13,12 +13,12 @@ Run from the repository root:
 
 from rdflib import Namespace
 
-from pyrdm import PyRDM, RDFRepository
+from rdfmapper import RDFMapper, RDFRepository
 
 EX = Namespace("http://example.org/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 
 # ------------------------------------------------------------------

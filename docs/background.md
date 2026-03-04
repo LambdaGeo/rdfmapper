@@ -1,6 +1,6 @@
 # Background and Lineage
 
-pyrdm is the result of a line of research on Object-RDF Mapping at the
+rdfmapper is the result of a line of research on Object-RDF Mapping at the
 [LambdaGeo Research Group](https://github.com/LambdaGeo), Federal University of
 Maranhão (UFMA), Brazil. Understanding where it came from helps explain its design
 decisions.
@@ -12,7 +12,7 @@ decisions.
 ```
 simpot (2022)
     └── RDFMapper TCC (2025)
-            └── pyrdm (2025)
+            └── rdfmapper (2025)
 
 dbacademic-etl ──── used simpot in practice
                     and revealed its limitations
@@ -89,9 +89,9 @@ The thesis is titled:
 
 ---
 
-## pyrdm — the packaged library
+## rdfmapper — the packaged library
 
-**pyrdm** takes RDFMapper's proven design and restructures it for open-source
+**rdfmapper** takes RDFMapper's proven design and restructures it for open-source
 distribution and long-term maintenance:
 
 - `src` layout following Python packaging best practices
@@ -108,7 +108,7 @@ broader Python and Semantic Web communities.
 
 ## Comparison
 
-| Feature | simpot | RDFMapper | pyrdm |
+| Feature | simpot | RDFMapper | rdfmapper |
 |---|:---:|:---:|:---:|
 | Decorator-based mapping | ✅ | ✅ | ✅ |
 | Relationships (1:1, 1:N) | ❌ | ✅ | ✅ |

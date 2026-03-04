@@ -15,8 +15,8 @@ class RDFRepository:
 
     Parameters
     ----------
-    mapper : PyRDM
-        The PyRDM instance used for deserialization.
+    mapper : RDFMapper
+        The RDFMapper instance used for deserialization.
     graph : Graph
         The RDF graph to query against.
     entity_class : type

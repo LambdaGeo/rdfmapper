@@ -4,7 +4,7 @@
 from method names, similar to Spring Data JPA.
 
 ```python
-from pyrdm import RDFRepository
+from rdfmapper import RDFRepository
 
 repo = RDFRepository(mapper, graph, Person)
 ```

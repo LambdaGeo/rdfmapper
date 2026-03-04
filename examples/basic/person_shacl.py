@@ -7,12 +7,12 @@ Run from the repository root:
 
 from rdflib import Namespace
 
-from pyrdm import PyRDM
+from rdfmapper import RDFMapper
 
 EX = Namespace("http://example.org/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 
 @mapper.rdf_entity(EX.Person)

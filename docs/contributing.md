@@ -3,8 +3,8 @@
 ## Setup
 
 ```bash
-git clone https://github.com/lambdageo/pyrdm.git
-cd pyrdm
+git clone https://github.com/lambdageo/rdfmapper.git
+cd rdfmapper
 pip install -e ".[dev]"
 ```
 
@@ -29,4 +29,4 @@ mypy src/
 
 ## Reporting issues
 
-Please open an issue at [github.com/lambdageo/pyrdm/issues](https://github.com/lambdageo/pyrdm/issues).
+Please open an issue at [github.com/lambdageo/rdfmapper/issues](https://github.com/lambdageo/rdfmapper/issues).

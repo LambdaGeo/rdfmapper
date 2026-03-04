@@ -51,5 +51,5 @@ class Person:
 ```
 
 !!! note "Circular references"
-    pyrdm detects circular references during both serialization and deserialization
+    rdfmapper detects circular references during both serialization and deserialization
     and handles them safely without infinite recursion.

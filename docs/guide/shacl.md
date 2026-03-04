@@ -2,7 +2,7 @@
 
 ## Auto-generate shapes
 
-pyrdm generates a SHACL NodeShape directly from the cardinality metadata
+rdfmapper generates a SHACL NodeShape directly from the cardinality metadata
 declared in `@rdf_property`:
 
 ```python
