@@ -1,5 +1,5 @@
 ---
-title: 'pyrdm: A Declarative Object-RDF Mapper for Python'
+title: 'rdfmapper: A Declarative Object-RDF Mapper for Python'
 tags:
   - Python
   - Semantic Web
@@ -23,14 +23,14 @@ bibliography: paper.bib
 
 # Summary
 
-`pyrdm` is a Python library that provides declarative Object-RDF Mapping (ORM),
+`rdfmapper` is a Python library that provides declarative Object-RDF Mapping (ORM),
 enabling developers to map Python classes to RDF graphs [@w3c_rdf11_concepts] using
 a decorator-based API without writing SPARQL [@w3c_sparql] queries or manipulating
 triples directly. The library is inspired by established ORM frameworks such as
 JPA [@jpa_spec] and SQLAlchemy [@sqlalchemy], adapted to the requirements of the
 Semantic Web [@heath2011linked].
 
-Built on top of `rdflib` [@rdflib] and `pyshacl` [@pyshacl], `pyrdm` bridges the
+Built on top of `rdflib` [@rdflib] and `pyshacl` [@pyshacl], `rdfmapper` bridges the
 gap between object-oriented programming and RDF-based knowledge representation.
 It handles serialization and deserialization of Python objects to and from RDF
 graphs, generates SHACL shapes [@w3c_shacl] automatically from class metadata,
@@ -57,7 +57,7 @@ attempt at ORM-style access to RDF stores in Python. However, RDFAlchemy has bee
 unmaintained since 2012 and does not support modern Python packaging, type
 annotations, or SHACL validation.
 
-`pyrdm` fills this gap for the Python ecosystem by providing:
+`rdfmapper` fills this gap for the Python ecosystem by providing:
 
 - A decorator API (`@rdf_entity`, `@rdf_property`, `@rdf_one_to_one`,
   `@rdf_one_to_many`) that keeps the mapping co-located with the class definition,
@@ -69,28 +69,28 @@ annotations, or SHACL validation.
   and aggregation.
 - Automatic SHACL shape generation from class metadata and validation via `pyshacl`.
 
-`pyrdm` grew directly from research at the LambdaGeo Group at UFMA. Its predecessor,
+`rdfmapper` grew directly from research at the LambdaGeo Group at UFMA. Its predecessor,
 `simpot` [@simpot], introduced a basic decorator approach to RDF mapping in Python.
 The practical experience of using `simpot` in the `dbacademic-etl` project
 [@costa2020dbacademic] — a pipeline connecting open academic data from Brazilian
 institutions into RDF knowledge graphs — revealed the need for a richer mapping
 framework supporting relationships, deserialization, and validation. This motivated
 the development of RDFMapper as a Bachelor's thesis [@goiabeira2025rdfmapper], of
-which `pyrdm` is the packaged and maintained evolution.
+which `rdfmapper` is the packaged and maintained evolution.
 
 # Design and API
 
-The central class is `PyRDM`, which acts both as a decorator factory and as the
+The central class is `RDFMapper`, which acts both as a decorator factory and as the
 serialization engine. A typical mapping looks as follows:
 
 ```python
 from rdflib import Namespace
-from pyrdm import PyRDM, RDFRepository
+from rdfmapper import RDFMapper, RDFRepository
 
 EX = Namespace("http://example.org/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 @mapper.rdf_entity(EX.Person)
 class Person:

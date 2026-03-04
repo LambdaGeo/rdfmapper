@@ -1,8 +1,8 @@
-site_name: pyrdm
+site_name: rdfmapper
 site_description: A declarative Object-RDF Mapper for Python
-site_url: https://lambdageo.github.io/pyrdm
-repo_url: https://github.com/lambdageo/pyrdm
-repo_name: lambdageo/pyrdm
+site_url: https://lambdageo.github.io/rdfmapper
+repo_url: https://github.com/lambdageo/rdfmapper
+repo_name: lambdageo/rdfmapper
 
 theme:
   name: material
@@ -45,7 +45,7 @@ nav:
       - Querying: guide/querying.md
       - SHACL Validation: guide/shacl.md
   - API Reference:
-      - PyRDM: api/mapper.md
+      - RDFMapper: api/mapper.md
       - RDFRepository: api/repository.md
   - Contributing: contributing.md
 

@@ -3,14 +3,14 @@
 ## Installation
 
 ```bash
-pip install pyrdm
+pip install rdfmapper-py
 ```
 
 To install from source with development dependencies:
 
 ```bash
-git clone https://github.com/lambdageo/pyrdm.git
-cd pyrdm
+git clone https://github.com/lambdageo/rdfmapper.git
+cd rdfmapper
 pip install -e ".[dev]"
 ```
 
@@ -24,12 +24,12 @@ pip install -e ".[dev]"
 
 ```python
 from rdflib import Namespace
-from pyrdm import PyRDM
+from rdfmapper import RDFMapper
 
 EX = Namespace("http://example.org/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
-mapper = PyRDM()
+mapper = RDFMapper()
 
 @mapper.rdf_entity(EX.Person)
 class Person:
@@ -76,7 +76,7 @@ print(restored.age)   # 25
 ### 4. Query with the repository
 
 ```python
-from pyrdm import RDFRepository
+from rdfmapper import RDFRepository
 
 repo = RDFRepository(mapper, graph, Person)
 

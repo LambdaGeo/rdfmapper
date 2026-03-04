@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyrdm"
+name = "rdfmapper"
 version = "0.1.0"
 description = "A declarative Object-RDF Mapper for Python — map Python classes to RDF graphs using decorators."
 readme = { file = "README.md", content-type = "text/markdown" }
@@ -41,9 +41,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/lambdageo/pyrdm"
-Repository = "https://github.com/lambdageo/pyrdm"
-Issues = "https://github.com/lambdageo/pyrdm/issues"
+Homepage = "https://github.com/lambdageo/rdfmapper"
+Repository = "https://github.com/lambdageo/rdfmapper"
+Issues = "https://github.com/lambdageo/rdfmapper/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

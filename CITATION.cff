@@ -1,14 +1,14 @@
 cff-version: 1.2.0
-message: "If you use pyrdm in your research, please cite it as below."
+message: "If you use rdfmapper in your research, please cite it as below."
 type: software
-title: "pyrdm: A Declarative Object-RDF Mapper for Python"
+title: "rdfmapper: A Declarative Object-RDF Mapper for Python"
 version: 0.1.0
 date-released: "2025-01-01"
 license: MIT
-repository-code: "https://github.com/lambdageo/pyrdm"
-url: "https://github.com/lambdageo/pyrdm"
+repository-code: "https://github.com/lambdageo/rdfmapper"
+url: "https://github.com/lambdageo/rdfmapper"
 abstract: >
-  pyrdm is a Python library that provides declarative Object-RDF Mapping (ORM),
+  rdfmapper is a Python library that provides declarative Object-RDF Mapping (ORM),
   enabling developers to map Python classes to RDF graphs using a decorator-based
   API without writing SPARQL queries or manipulating triples directly.
 keywords:
