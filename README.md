@@ -3,9 +3,9 @@
 **rdfmapper** is a declarative Object-RDF Mapper for Python. It lets you map Python classes to RDF graphs using decorators, inspired by ORM frameworks such as JPA and SQLAlchemy, without requiring you to write SPARQL or manipulate triples manually.
 
 [![Tests](https://github.com/lambdageo/rdfmapper/actions/workflows/ci.yml/badge.svg)](https://github.com/lambdageo/rdfmapper/actions)
-[![PyPI](https://img.shields.io/pypi/v/rdfmapper-py)](https://pypi.org/project/rdfmapper-py/)
+[![PyPI](https://img.shields.io/pypi/v/rdfmapper)](https://pypi.org/project/rdfmapper/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/rdfmapper-py)](https://pypi.org/project/rdfmapper-py/)
+[![Python](https://img.shields.io/pypi/pyversions/rdfmapper)](https://pypi.org/project/rdfmapper/)
 
 ---
 
@@ -24,7 +24,7 @@
 ## Installation
 
 ```bash
-pip install rdfmapper-py
+pip install rdfmapper
 ```
 
 Or install from source:
